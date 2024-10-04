@@ -1,0 +1,58 @@
+#######################################################################################################################################
+# Teoría
+
+1. b
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+2. a
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+3. En la primera forma normal.
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+4. Básicamente los 2 filtran información pero having filtra sobre grupos y where filtra antes de cualquier agrupación.
+#--------------------------------------------------------------------------------------------------------------------------------------
+
+5.c
+#######################################################################################################################################
+# Práctica
+
+1.
+
+```SQL
+-- poner solución debajo de este mensaje
+
+SELECT nombre_materia, AVG(calificacion) AS promedio_calificacion
+FROM calificaciones
+WHERE calificacion IS NOT NULL
+GROUP BY nombre_materia
+ORDER BY promedio_calificacion DESC;
+
+```
+
+2.
+
+```SQL
+-- poner solución debajo de este mensaje
+
+SELECT DISTINCT a.nombre, a.apellido
+FROM alumnos a
+JOIN calificaciones c ON a.expediente = c.expediente
+WHERE c.calificacion IS NOT NULL
+ORDER BY a.apellido;
+
+
+```
+
+3.
+
+```SQL
+-- poner solución debajo de este mensaje
+
+SELECT alumnos.nombre, alumnos.apellido, MAX(calificaciones.calificacion) AS max_calificacion
+FROM alumnos
+JOIN calificaciones ON alumnos.expediente = calificaciones.expediente
+WHERE calificacion IS NOT NULL
+GROUP BY alumnos.expediente
+
+```
